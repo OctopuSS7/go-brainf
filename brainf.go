@@ -24,16 +24,19 @@ func render_memory(cells [8]byte, pntr int) {
 func main() {
     fmt.Printf("\x1b[2J")
     output := []string{}
-    var inputFile string
+    var programFile string
+    var input string
  //   var cellNumber int
     const cellNumber = 8
-    flag.StringVar(&inputFile, "file", "", "path to program file")
+    flag.StringVar(&programFile, "file", "", "path to program file")
+    flag.StringVar(&input, "input", "", "(optional) input for program")
 //    flag.IntVar(&cellNumber, "cells", 8, "max amount of cells")
     flag.Parse()
-    if len(inputFile) == 0 {
+    inputArray = []byte(input)
+    if len(programFile) == 0 {
         os.Exit(1)
     }
-    buf, _ := ioutil.ReadFile(inputFile)
+    buf, _ := ioutil.ReadFile(programFile)
     program := string(buf)
     cells := [cellNumber]byte{}
     pntr := 0
@@ -54,6 +57,10 @@ func main() {
 
         case '.':
             output = append(output, string(cells[pntr]))
+
+        case ',':
+            cells[pntr] = inputArray[0]
+            inputArray = inputArray[:(len(stack) - 1)]
 
         case '[':
             if (cells[pntr] == 0) {
