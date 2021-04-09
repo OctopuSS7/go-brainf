@@ -15,6 +15,10 @@
   - with cell values, 
   - and pointer values.
 - Allow unlimited cells (both directions)
+- Add more examples to demonstrate:
+  - input capabilities,
+  - control characters,
+  - some basic maths.
 
 ## Limitations
 
