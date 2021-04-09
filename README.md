@@ -26,3 +26,16 @@
   - (or in the new Windows Terminal).
 
 - Option to switch to win32 terminal codes soon.
+
+## Example
+
+Input: `BrainF -file=hello_world`
+
+Output:
+
+```
+|-000-|-000-|-072-|-100-|-087-|-032-|-008-|-000-|
+              (^)      
+              
+Output: Hello World
+```
