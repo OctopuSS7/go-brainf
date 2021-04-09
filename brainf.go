@@ -4,6 +4,7 @@ import (
     "flag"
     "fmt"
     "os"
+    "strings"
     "time"
     "io/ioutil"
 )
@@ -22,6 +23,7 @@ func render_memory(cells [8]byte, pntr int) {
 }
 
 func main() {
+    fmt.Print("\033[?25l")
     fmt.Printf("\x1b[2J")
     output := []string{}
     var programFile string
@@ -101,5 +103,6 @@ func main() {
     }
 //    render_memory(cells)
     fmt.Print("\x1b[4B")
+    fmt.Printf("\033[0H\033[0J\033[?25h")
     fmt.Scanln()
 }
