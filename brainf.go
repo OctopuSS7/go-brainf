@@ -32,7 +32,7 @@ func main() {
     flag.StringVar(&input, "input", "", "(optional) input for program")
 //    flag.IntVar(&cellNumber, "cells", 8, "max amount of cells")
     flag.Parse()
-    inputArray = []byte(input)
+    inputArray := []byte(input)
     if len(programFile) == 0 {
         os.Exit(1)
     }
@@ -60,7 +60,7 @@ func main() {
 
         case ',':
             cells[pntr] = inputArray[0]
-            inputArray = inputArray[:(len(stack) - 1)]
+            inputArray = inputArray[:(len(inputArray) - 1)]
 
         case '[':
             if (cells[pntr] == 0) {
@@ -95,7 +95,7 @@ func main() {
         if (pntr > 7) {pntr = pntr - 8}
         fmt.Print("\x1b[H")
         render_memory(cells, pntr)
-        fmt.Printf("Output: %s", output)
+        fmt.Printf("Output: %s", strings.Join(output, ""))
         time.Sleep((1 * time.Second)/20)
         fmt.Print("\x1b[H")
     }
